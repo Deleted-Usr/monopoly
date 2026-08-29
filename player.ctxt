@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=player
+comment1.params=money\ position
+comment1.target=player(int,\ int)
+comment2.params=
+comment2.target=int\ getPlayerPosition()
+comment3.params=
+comment3.target=int\ getMoney()
+comment4.params=
+comment4.target=void\ setName()
+numComments=5

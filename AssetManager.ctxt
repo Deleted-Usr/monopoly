@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=AssetManager
+comment1.params=
+comment1.target=AssetManager()
+comment2.params=asset
+comment2.target=java.awt.image.BufferedImage\ loadImage(AssetEnum)
+comment3.params=path
+comment3.target=java.awt.image.BufferedImage\ loadImage(java.lang.String)
+numComments=4
