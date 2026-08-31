@@ -1,0 +1,25 @@
+week 1
+PLANNED:
+Begin monopoly game
+build the class structure
+ACOMPLISHED:
+Class structure built
+
+week 2
+PLANNED:
+ACOMPLISHED:
+
+week 3
+PLANNED:
+ACCOMPLISHED
+
+week 4
+PLANNED:
+ACOMPLISHED
+
+week 5
+PLANNED:
+Finish the menus
+ACOMPLISHED:
+Start menu completed
+Began settings menu

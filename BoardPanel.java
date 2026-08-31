@@ -24,6 +24,7 @@ public class BoardPanel extends JPanel implements ActionListener{
 
     private Board board;
     private player player;
+    private Settings settingsPanel;
 
     String imagePath; 
     BufferedImage bgImage;
@@ -35,7 +36,9 @@ public class BoardPanel extends JPanel implements ActionListener{
     BufferedImage p4Image;
 
     public BoardPanel() {
+        setLayout(null);
         board = new Board();
+        settingsPanel = new Settings(this);
         try
         {
             loadImage();
@@ -44,7 +47,7 @@ public class BoardPanel extends JPanel implements ActionListener{
         {
             ioe.printStackTrace();
         }
-        this.setLayout(null);
+
         startButton = new JButton("Start Game"); 
         add(startButton); 
         startButton.addActionListener(this); 
@@ -88,10 +91,26 @@ public class BoardPanel extends JPanel implements ActionListener{
             playing = true;  
         }
         if(e.getSource() == settingsButton){
-            settings = true;        
+            settings = true;
+            //settingsPanel.playerField1.setVisible(true);
+            settingsPanel.moneyField.setVisible(true);
+            settingsPanel.applyButton.setVisible(true);
+            settingsPanel.howManyPlayers.setVisible(true);
+            settingsPanel.player1.setVisible(true);
+            settingsPanel.player2.setVisible(true);
+            settingsPanel.player3.setVisible(true);
+            settingsPanel.player4.setVisible(true);
         }
         if(e.getSource() == backButton) {
             settings = false;
+            settingsPanel.howManyPlayers.setVisible(false);
+            settingsPanel.playerField1.setVisible(false);
+            settingsPanel.moneyField.setVisible(false);
+            settingsPanel.applyButton.setVisible(false);
+            settingsPanel.player1.setVisible(false);
+            settingsPanel.player2.setVisible(false);
+            settingsPanel.player3.setVisible(false);
+            settingsPanel.player4.setVisible(false);
         }
         repaint();
     } 
@@ -141,6 +160,7 @@ public class BoardPanel extends JPanel implements ActionListener{
             g.drawImage(seImage, 0, 0, 900, 900, this);
             startButton.setVisible(false);
             settingsButton.setVisible(false);
+
         }
         if(playing){
             g.setColor(Color.white);

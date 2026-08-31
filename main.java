@@ -9,7 +9,9 @@ public class main extends BoardPanel{
         window.setResizable(false);
         window.setSize(900, 900); 
         window.getContentPane().add(new BoardPanel()); 
-        window.setVisible(true); 
+        window.setVisible(true);
+        window.setLocationRelativeTo(null);
+
 
     }
 }

@@ -34,4 +34,8 @@ public class property extends Spaces{
         return color;
     }
 
+    public boolean isOwned() {
+        return owner != null;
+    }
+
 }
