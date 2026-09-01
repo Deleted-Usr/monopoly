@@ -1,13 +1,19 @@
-package Java.MONOPOLY;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class Settings {
     public int playerCount;
+    public int startingMoney;
+    public int rounds;
+    public String p1;
+    public String p2;
+    public String p3;
+    public String p4;
 
-
-    JLabel howManyPlayers = new JLabel("How Many Player?");
+    JLabel howManyPlayers = new JLabel("How Many Players?");
+    JLabel howMuchMoney = new JLabel("How Much Starting Money?");
+    JLabel howManyRounds = new JLabel("How Many Rounds?");
     JButton player1 = new JButton("1");
     JButton player2 = new JButton("2");
     JButton player3 = new JButton("3");
@@ -15,61 +21,96 @@ public class Settings {
     JTextField playerField1 = new JTextField("Enter Name");
     JTextField playerField2 = new JTextField("Enter Name");
     JTextField playerField3 = new JTextField("Enter Name");
-     JTextField playerField4 = new JTextField("Enter Name");
-    JTextField moneyField = new JTextField("TEST");
-    
+    JTextField playerField4 = new JTextField("Enter Name");
+    JTextField moneyField = new JTextField("Enter Amount");
+    JTextField roundsField = new JTextField("Enter Amount");
+
     final JButton applyButton = new JButton("Apply");
 
     public Settings(BoardPanel panel) {
 
+        applyButton.addActionListener(event -> apply());{
+                    
+        }
 
-        applyButton.addActionListener(event -> apply());
+        player1.addActionListener(event -> {
+                    playerCount = 1;
+                    updatePFields();
+            });
+        player2.addActionListener(event -> {
+                    playerCount = 2;
+                    updatePFields();
+            });
+        player3.addActionListener(event -> {
+                    playerCount = 3;
+                    updatePFields();
+            });
+        player4.addActionListener(event -> {
+                    playerCount = 4;
+                    updatePFields();
+            });
 
+        playerField1.addActionListener(event -> {
+                    p1 = playerField1.getText();                                
+            });
 
-         player1.addActionListener(event -> {
-             playerCount = 1;
-             updatePFields();
-                 });
-         player2.addActionListener(event -> {
-             playerCount = 2;
-             updatePFields();
-                 });
-         player3.addActionListener(event -> {
-             playerCount = 3;
-             updatePFields();
-                 });
-         player4.addActionListener(event -> {
-             playerCount = 4;
-             updatePFields();
-                 });
+        playerField2.addActionListener(event -> {
+                    p2 = playerField2.getText();
+            });
 
-         howManyPlayers.setFont(new Font("Arial", Font.BOLD, 16));
+        playerField3.addActionListener(event -> {
+                    p3 = playerField3.getText();
+            });
+
+        playerField4.addActionListener(event -> {
+                    p4 = playerField4.getText();
+            });
+
+        moneyField.addActionListener(event -> {
+                    startingMoney = Integer.valueOf(moneyField.getText());
+            });
+
+        roundsField.addActionListener(event -> {
+                    rounds = Integer.valueOf(roundsField.getText());
+            });
+
+        howManyPlayers.setFont(new Font("Arial", Font.BOLD, 16));
+        howMuchMoney.setFont(new Font("Arial", Font.BOLD, 16));
+        howManyRounds.setFont(new Font("Arial", Font.BOLD, 16));
 
         howManyPlayers.setBounds(50, 350, 200, 40);
+        howMuchMoney.setBounds(250, 350, 250, 40);
+        howManyRounds.setBounds(500, 350, 250, 40);
         player1.setBounds(50, 400, 50, 50);
         player2.setBounds(50, 450, 50, 50);
         player3.setBounds(50, 500, 50, 50);
         player4.setBounds(50, 550, 50, 50);
-         playerField1.setBounds(105,400, 200, 50);
-         playerField2.setBounds(105, 450, 200, 50);
-         playerField3.setBounds(105, 500, 200, 50);
-         playerField4.setBounds(105, 550, 200, 50);
-        moneyField.setBounds(200, 660, 200, 40);
-         applyButton.setBounds(200, 710, 200, 40);
+        playerField1.setBounds(105, 400, 100, 50);
+        playerField2.setBounds(105, 450, 100, 50);
+        playerField3.setBounds(105, 500, 100, 50);
+        playerField4.setBounds(105, 550, 100, 50);
+        moneyField.setBounds(250, 400, 100, 50);
+        roundsField.setBounds(500, 400, 100, 50);
+        applyButton.setBounds(350, 710, 200, 40);
 
-         panel.add(howManyPlayers);
-         panel.add(applyButton);
-         panel.add(playerField1);
-         panel.add(moneyField);
-         panel.add(player1);
-         panel.add(player2);
-         panel.add(player3);
-         panel.add(player4);
-         panel.add(playerField2);
-         panel.add(playerField3);
-         panel.add(playerField4);
+        panel.add(howManyPlayers);
+        panel.add(howMuchMoney);
+        panel.add(howManyRounds);
+        panel.add(applyButton);
+        panel.add(playerField1);
+        panel.add(moneyField);
+        panel.add(player1);
+        panel.add(player2);
+        panel.add(player3);
+        panel.add(player4);
+        panel.add(playerField2);
+        panel.add(playerField3);
+        panel.add(playerField4);
+        panel.add(roundsField);
 
-         howManyPlayers.setVisible(false);
+        howManyPlayers.setVisible(false);
+        howMuchMoney.setVisible(false);
+        howManyRounds.setVisible(false);
         playerField1.setVisible(false);
         moneyField.setVisible(false);
         applyButton.setVisible(false);
@@ -81,24 +122,29 @@ public class Settings {
         playerField2.setVisible(false);
         playerField3.setVisible(false);
         playerField4.setVisible(false);
+        roundsField.setVisible(false);
 
         styleButton(player1);
         styleButton(player2);
         styleButton(player3);
         styleButton(player4);
+        styleButton(applyButton);
 
         styleFields(playerField1);
         styleFields(playerField2);
         styleFields(playerField3);
         styleFields(playerField4);
+        styleFields(moneyField);
+        styleFields(roundsField);
 
         styleLabel(howManyPlayers);
-
+        styleLabel(howMuchMoney);
+        styleLabel(howManyRounds);
 
         panel.revalidate();
         panel.repaint();
     }
-    
+
     public void apply() {
         //
     }
@@ -111,24 +157,24 @@ public class Settings {
                 playerField3.setVisible(false);
                 playerField4.setVisible(false);
                 break;
-                case 2:
+            case 2:
                 playerField1.setVisible(true);
                 playerField2.setVisible(true);
                 playerField3.setVisible(false);
                 playerField4.setVisible(false);
                 break;
-                case 3:
-                    playerField1.setVisible(true);
-                    playerField2.setVisible(true);
-                    playerField3.setVisible(true);
-                    playerField4.setVisible(false);
-                    break;
-                    case 4:
-                        playerField1.setVisible(true);
-                        playerField2.setVisible(true);
-                        playerField3.setVisible(true);
-                        playerField4.setVisible(true);
-                        break;
+            case 3:
+                playerField1.setVisible(true);
+                playerField2.setVisible(true);
+                playerField3.setVisible(true);
+                playerField4.setVisible(false);
+                break;
+            case 4:
+                playerField1.setVisible(true);
+                playerField2.setVisible(true);
+                playerField3.setVisible(true);
+                playerField4.setVisible(true);
+                break;
         }
     }
 

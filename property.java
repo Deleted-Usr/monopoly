@@ -1,4 +1,4 @@
-package Java.MONOPOLY;
+ 
 import java.awt.Color;
 
 public class property extends Spaces{

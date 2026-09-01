@@ -1,4 +1,4 @@
-package Java.MONOPOLY;
+ 
 import java.awt.*; 
 import javax.swing.*;
 import java.awt.event.*;
@@ -92,10 +92,12 @@ public class BoardPanel extends JPanel implements ActionListener{
         }
         if(e.getSource() == settingsButton){
             settings = true;
-            //settingsPanel.playerField1.setVisible(true);
             settingsPanel.moneyField.setVisible(true);
             settingsPanel.applyButton.setVisible(true);
             settingsPanel.howManyPlayers.setVisible(true);
+            settingsPanel.howMuchMoney.setVisible(true);
+            settingsPanel.howManyRounds.setVisible(true);
+            settingsPanel.roundsField.setVisible(true);
             settingsPanel.player1.setVisible(true);
             settingsPanel.player2.setVisible(true);
             settingsPanel.player3.setVisible(true);
@@ -104,6 +106,9 @@ public class BoardPanel extends JPanel implements ActionListener{
         if(e.getSource() == backButton) {
             settings = false;
             settingsPanel.howManyPlayers.setVisible(false);
+            settingsPanel.howMuchMoney.setVisible(false);
+            settingsPanel.howManyRounds.setVisible(false);
+            settingsPanel.roundsField.setVisible(false);
             settingsPanel.playerField1.setVisible(false);
             settingsPanel.moneyField.setVisible(false);
             settingsPanel.applyButton.setVisible(false);

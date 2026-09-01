@@ -1,4 +1,4 @@
-package Java.MONOPOLY;
+ 
 import javax.swing.JFrame;
 import javax.swing.JPanel;   
 public class main extends BoardPanel{

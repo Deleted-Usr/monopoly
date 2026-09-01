@@ -1,4 +1,4 @@
-package Java.MONOPOLY;
+ 
 import java.util.Random;
 
 public class dice {
@@ -8,8 +8,9 @@ public class dice {
 
 
     public dice(){
-
-
+        rollDice();
+        printDice();
+        
 
 
     }
