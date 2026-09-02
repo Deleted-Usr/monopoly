@@ -1,4 +1,6 @@
- 
+package Java.MONOPOLY;
+
+
 import java.util.List;
 import java.util.ArrayList;
 import java.awt.Color;

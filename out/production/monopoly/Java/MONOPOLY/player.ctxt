@@ -1,11 +1,23 @@
 #BlueJ class context
 comment0.target=player
-comment1.params=money\ position
-comment1.target=player(int,\ int)
+comment1.params=playerName\ money\ position
+comment1.target=player(java.lang.String,\ int,\ int)
+comment10.params=property
+comment10.target=boolean\ buyProperty(Java.MONOPOLY.property)
 comment2.params=
 comment2.target=int\ getPlayerPosition()
 comment3.params=
 comment3.target=int\ getMoney()
 comment4.params=
 comment4.target=void\ setName()
-numComments=5
+comment5.params=
+comment5.target=java.lang.String\ getName()
+comment6.params=spaces
+comment6.target=void\ move(int)
+comment7.params=amount
+comment7.target=void\ addMoney(int)
+comment8.params=amount
+comment8.target=boolean\ removeMoney(int)
+comment9.params=
+comment9.target=java.util.List\ getProperties()
+numComments=11

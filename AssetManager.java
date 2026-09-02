@@ -1,4 +1,5 @@
- 
+package Java.MONOPOLY;
+
 
 import java.awt.image.*;
 import java.io.*;
@@ -19,7 +20,16 @@ public class AssetManager
     
     public static BufferedImage loadImage(String path) throws IOException
     {
-        BufferedImage img = ImageIO.read(new File(path));
-        return img;
+        InputStream input = AssetManager.class.getResourceAsStream("images/" + path);
+
+        if (input == null)
+        {
+            throw new FileNotFoundException("Could not find image: images/" + path);
+        }
+
+        try (InputStream imageInput = input)
+        {
+            return ImageIO.read(imageInput);
+        }
     }
 }

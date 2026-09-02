@@ -1,12 +1,11 @@
- 
+package Java.MONOPOLY;
+
+
 import java.awt.*; 
 import javax.swing.*;
 import java.awt.event.*;
-import java.io.File; 
-import java.io.IOException; 
-import javax.sound.sampled.*;
-import java.awt.image.BufferedImage; 
-import javax.imageio.ImageIO;  
+import java.io.IOException;
+import java.awt.image.BufferedImage;
 
 public class BoardPanel extends JPanel implements ActionListener{
     int margin = 50;
@@ -21,10 +20,14 @@ public class BoardPanel extends JPanel implements ActionListener{
     JButton startButton;
     JButton settingsButton;
     JButton backButton;
+    JButton diceButton;
+
+    public boolean showDice = false;
 
     private Board board;
     private player player;
     private Settings settingsPanel;
+    private dice dice;
 
     String imagePath; 
     BufferedImage bgImage;
@@ -34,8 +37,11 @@ public class BoardPanel extends JPanel implements ActionListener{
     BufferedImage p2Image;
     BufferedImage p3Image;
     BufferedImage p4Image;
+    BufferedImage diceIMG;
 
     public BoardPanel() {
+
+
         setLayout(null);
         board = new Board();
         settingsPanel = new Settings(this);
@@ -57,18 +63,28 @@ public class BoardPanel extends JPanel implements ActionListener{
         backButton = new JButton("\u21D0");
         add(backButton);
         backButton.addActionListener(this);
+        diceButton = new JButton("Roll Dice");
+        add(diceButton);
+        diceButton.addActionListener(this);
+    }
+
+    
+    public void diceRoll(){
+        if (dice.diceRolled){
+            showDice = true;
+            Timer timer = new Timer(2000, new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    showDice = false;
+                    repaint();
+                }
+            });
+            timer.setRepeats(false);
+
+        }
     }
     
-    
-    
-    public JButton setPlayButton()
-    {
-        JButton button = new JButton("Play");
-        
-        
-        
-        return button;
-    }
+
 
     public void loadImage() throws IOException {
         try {
@@ -79,6 +95,7 @@ public class BoardPanel extends JPanel implements ActionListener{
             p2Image = AssetManager.loadImage(AssetEnum.PLAYER2);
             p3Image = AssetManager.loadImage(AssetEnum.PLAYER3);
             p4Image = AssetManager.loadImage(AssetEnum.PLAYER4);
+            diceIMG = AssetManager.loadImage(AssetEnum.DICE);
         } catch (IOException e) {
             System.out.println("Error loading image. Check path and filename.");
             e.printStackTrace();
@@ -176,6 +193,11 @@ public class BoardPanel extends JPanel implements ActionListener{
             }
             if (p1Image != null){
                 g.drawImage(p1Image, start, start, pieceSize, pieceSize, this);
+            }
+
+            if (showDice){
+                g.drawImage(diceIMG,250, 350, 100, 50, this);
+                g.drawString(String.valueOf(dice.sum), 250, 400);
             }
 
         }
