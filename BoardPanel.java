@@ -1,5 +1,3 @@
-package Java.MONOPOLY;
-
 
 import java.awt.*; 
 import javax.swing.*;
@@ -22,6 +20,8 @@ public class BoardPanel extends JPanel implements ActionListener{
     JButton backButton;
     JButton diceButton;
 
+    public boolean roll;
+
     public boolean showDice = false;
 
     private Board board;
@@ -40,8 +40,6 @@ public class BoardPanel extends JPanel implements ActionListener{
     BufferedImage diceIMG;
 
     public BoardPanel() {
-
-
         setLayout(null);
         board = new Board();
         settingsPanel = new Settings(this);
@@ -68,23 +66,21 @@ public class BoardPanel extends JPanel implements ActionListener{
         diceButton.addActionListener(this);
     }
 
-    
     public void diceRoll(){
-        if (dice.diceRolled){
+        if (roll = true){
             showDice = true;
             Timer timer = new Timer(2000, new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    showDice = false;
-                    repaint();
-                }
-            });
+                       @Override
+                        public void actionPerformed(ActionEvent e) {
+                            showDice = true;
+                            repaint();
+                        }
+                    });
+            showDice = false;
             timer.setRepeats(false);
 
         }
     }
-    
-
 
     public void loadImage() throws IOException {
         try {
@@ -134,8 +130,20 @@ public class BoardPanel extends JPanel implements ActionListener{
             settingsPanel.player3.setVisible(false);
             settingsPanel.player4.setVisible(false);
         }
+        if(e.getSource() == diceButton) {
+            roll = true;
+            diceRoll();
+        }
         repaint();
     } 
+
+    public void styleButton(JButton button){
+        button.setOpaque(false);
+        button.setContentAreaFilled(false);
+        button.setFocusPainted(false);
+        button.setForeground(Color.WHITE);
+        button.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+    }
 
     @Override
     protected void paintComponent(Graphics g)
@@ -144,45 +152,38 @@ public class BoardPanel extends JPanel implements ActionListener{
         //board
         startButton.setVisible(!playing);
         settingsButton.setVisible(!playing);
-        
+        diceButton.setVisible(playing);
+
         backButton.setVisible(settings);
 
         if(!playing){
             if (scImage != null) {
                 g.drawImage(scImage, 0, 0, 900, 900, this);
             }
-            
+
             startButton.setLocation(350,550); 
             startButton.setSize(200,60); 
-            
-            startButton.setOpaque(false);
-            startButton.setContentAreaFilled(false);
-            startButton.setFocusPainted(false);
-            startButton.setForeground(Color.WHITE);
-            startButton.setFont(new Font("Arial", Font.BOLD, 16));
-        
+            styleButton(startButton);
+
             settingsButton.setLocation(350, 610);
             settingsButton.setSize(200, 60);
-            settingsButton.setOpaque(false);
-            settingsButton.setContentAreaFilled(false);
-            settingsButton.setFocusPainted(false);
-            settingsButton.setForeground(Color.WHITE);
-            settingsButton.setFont(new Font("Arial", Font.BOLD, 16));
-            
+            styleButton(settingsButton);
+
             backButton.setLocation(0, 0);
             backButton.setSize(100, 100);
-            backButton.setOpaque(false);
-            backButton.setContentAreaFilled(false);
-            backButton.setBorderPainted(false);
-            backButton.setFocusPainted(false);
-            backButton.setForeground(Color.WHITE);
+            styleButton(backButton);
             backButton.setFont(new Font("Segoe UI Symbol", Font.BOLD, 50));
+
+            diceButton.setLocation(350, 850);
+            diceButton.setSize(200, 60);
+            diceButton.setBackground(Color.GREEN);
+
         }
         if(settings){
             g.drawImage(seImage, 0, 0, 900, 900, this);
             startButton.setVisible(false);
             settingsButton.setVisible(false);
-
+            diceButton.setVisible(true);
         }
         if(playing){
             g.setColor(Color.white);
@@ -196,11 +197,14 @@ public class BoardPanel extends JPanel implements ActionListener{
             }
 
             if (showDice){
-                g.drawImage(diceIMG,250, 350, 100, 50, this);
-                g.drawString(String.valueOf(dice.sum), 250, 400);
+                if (diceIMG != null){
+                    g.drawImage(diceIMG,300, 400, 300, 150, this);
+                    //g.drawString("You Rolled" + dice.outCome, 275, 365);
+                }
             }
 
         }
-        //Icons
+
     }
 }
+

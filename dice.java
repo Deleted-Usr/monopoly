@@ -1,4 +1,4 @@
-package Java.MONOPOLY;
+
 
 
 import java.util.Random;
@@ -8,6 +8,7 @@ public class dice {
     public int dice2;
     public int sum;
     public boolean diceRolled = false;
+    public String outCome;
 
 
     public void rollDice(){
@@ -15,14 +16,15 @@ public class dice {
         int dice1 = random.nextInt(6) + 1;
         int dice2 = random.nextInt(6) + 1;
         sum = dice1 + dice2;
+        outCome = Integer.toString(sum);
     }
 
-    public void printDice(){
+    /*public void printDice(){
         if(diceRolled){
-
             System.out.println("Dice rolled: " + sum);
         }
     }
+    */
 
 
 }

@@ -1,4 +1,4 @@
-package Java.MONOPOLY;
+ 
 
 
 public class Spaces {
