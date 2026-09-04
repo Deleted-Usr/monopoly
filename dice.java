@@ -2,6 +2,7 @@
 
 
 import java.util.Random;
+import java.awt.Font;
 
 public class dice {
     public int dice1;
@@ -18,13 +19,4 @@ public class dice {
         sum = dice1 + dice2;
         outCome = Integer.toString(sum);
     }
-
-    /*public void printDice(){
-        if(diceRolled){
-            System.out.println("Dice rolled: " + sum);
-        }
-    }
-    */
-
-
 }

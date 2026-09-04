@@ -7,10 +7,9 @@ public class game{
     private player players;
     private dice dice;
 
-    public boolean diceRolled = false;
+    
 
     public game(){
-        
         
     
     
@@ -18,5 +17,5 @@ public class game{
     
     
     }
-
+    
 }

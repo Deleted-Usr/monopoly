@@ -28,6 +28,8 @@ public class BoardPanel extends JPanel implements ActionListener{
     private player player;
     private Settings settingsPanel;
     private dice dice;
+    
+    private Timer diceTimer;
 
     String imagePath; 
     BufferedImage bgImage;
@@ -43,6 +45,18 @@ public class BoardPanel extends JPanel implements ActionListener{
         setLayout(null);
         board = new Board();
         settingsPanel = new Settings(this);
+        setFont(new Font("Arial", Font.BOLD, 24));
+    
+        dice = new dice();
+        diceTimer = new Timer(2000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                showDice = true;
+                repaint();
+            }
+        });
+        diceTimer.setRepeats(false);
+        
         try
         {
             loadImage();
@@ -66,19 +80,10 @@ public class BoardPanel extends JPanel implements ActionListener{
         diceButton.addActionListener(this);
     }
 
-    public void diceRoll(){
+    public void diceRoll() {
         if (roll = true){
-            showDice = true;
-            Timer timer = new Timer(2000, new ActionListener() {
-                       @Override
-                        public void actionPerformed(ActionEvent e) {
-                            showDice = true;
-                            repaint();
-                        }
-                    });
-            showDice = false;
-            timer.setRepeats(false);
-
+            dice.rollDice();
+            diceTimer.start();
         }
     }
 
@@ -196,15 +201,20 @@ public class BoardPanel extends JPanel implements ActionListener{
                 g.drawImage(p1Image, start, start, pieceSize, pieceSize, this);
             }
 
-            if (showDice){
+            if (diceTimer.isRunning()) {
                 if (diceIMG != null){
                     g.drawImage(diceIMG,300, 400, 300, 150, this);
-                    //g.drawString("You Rolled" + dice.outCome, 275, 365);
+                    System.out.println("You Rolled " + dice.outCome);
+                    g.setColor(Color.BLACK);
+                    g.drawString("You Rolled  " + dice.outCome, 400, 485);
                 }
             }
 
         }
+        
+        
+    }
 
     }
-}
+
 

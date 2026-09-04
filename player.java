@@ -1,4 +1,3 @@
- 
 
 
 import java.util.List;
@@ -11,6 +10,8 @@ public class player
     private String playerName;
     private int position;
     private final List<property> properties = new ArrayList<>();
+    
+    private List<player> players = new ArrayList();
 
     public player(String playerName, int money, int position)
     {
@@ -35,13 +36,14 @@ public class player
         return playerName;
     }
 
-
     public void move(int spaces) {
         position = (position + spaces) % 40;
     }
+
     public void addMoney(int amount) {
         money += amount;
     }
+
     public boolean removeMoney(int amount) {
         if (amount > money) {
             return false;
@@ -54,12 +56,11 @@ public class player
         return properties;
     }
 
-
     public boolean buyProperty(property property) {
         if (property.isOwned()) {
-        System.out.println("Property Already Owned");
-        return false;
-    }
+            System.out.println("Property Already Owned");
+            return false;
+        }
         else if(getMoney() < property.getPrice()){
             System.out.println("U can not afford");
             return false;
@@ -70,9 +71,6 @@ public class player
             properties.add(property);
             return true;
         }
-
-
     }
-
 
 }

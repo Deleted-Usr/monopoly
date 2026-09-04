@@ -2,10 +2,10 @@
 comment0.target=BoardPanel
 comment1.params=
 comment1.target=BoardPanel()
-comment2.params=
-comment2.target=void\ diceRoll()
-comment3.params=e
-comment3.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment2.params=e
+comment2.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment3.params=
+comment3.target=void\ diceRoll()
 comment4.params=
 comment4.target=void\ loadImage()
 comment5.params=e
