@@ -5,14 +5,16 @@ import java.util.ArrayList;
 
 public class player
 {
+    private game Game;
 
     private int money = 0;
     private String playerName;
     private int position;
     private final List<property> properties = new ArrayList<>();
     
-    private List<player> players = new ArrayList();
-
+    
+    
+    
     public player(String playerName, int money, int position)
     {
         this.playerName = playerName;
@@ -55,7 +57,10 @@ public class player
     public List<property> getProperties(){
         return properties;
     }
-
+    
+   
+    
+    
     public boolean buyProperty(property property) {
         if (property.isOwned()) {
             System.out.println("Property Already Owned");

@@ -11,6 +11,8 @@ public class Settings {
     public String p2;
     public String p3;
     public String p4;
+    
+    public int startingPosition = 0;
 
     JLabel howManyPlayers = new JLabel("How Many Players?");
     JLabel howMuchMoney = new JLabel("How Much Starting Money?");
@@ -27,12 +29,19 @@ public class Settings {
     JTextField roundsField = new JTextField("Enter Amount");
 
     final JButton applyButton = new JButton("Apply");
+    
+    private player player;
+    private game game;
 
-    public Settings(BoardPanel panel) {
+    public Settings(BoardPanel panel, game game) {
+        this.game = game;
 
-        applyButton.addActionListener(event -> apply());{
-                    
-        }
+        applyButton.addActionListener(event -> {
+            apply(); 
+            System.out.println(game.numOfPlayers);
+            
+            
+        });
 
         player1.addActionListener(event -> {
                     playerCount = 1;
@@ -147,7 +156,28 @@ public class Settings {
     }
 
     public void apply() {
-        
+        startingMoney = Integer.valueOf(moneyField.getText());
+        rounds = Integer.valueOf(roundsField.getText());
+        switch(playerCount){
+                case 1:
+                    game.addPlayers(new player(p1, startingMoney, startingPosition));
+                    break;
+                case 2:
+                    game.addPlayers(new player(p1, startingMoney, startingPosition));
+                    game.addPlayers(new player(p2, startingMoney, startingPosition));
+                    break;
+                case 3:
+                    game.addPlayers(new player(p1, startingMoney, startingPosition));
+                    game.addPlayers(new player(p2, startingMoney, startingPosition));
+                    game.addPlayers(new player(p3, startingMoney, startingPosition));
+                    break;
+                case 4:
+                    game.addPlayers(new player(p1, startingMoney, startingPosition));
+                    game.addPlayers(new player(p2, startingMoney, startingPosition));
+                    game.addPlayers(new player(p3, startingMoney, startingPosition));
+                    game.addPlayers(new player(p4, startingMoney, startingPosition));
+                    break;
+          }
     }
 
     public void updatePFields() {
@@ -186,6 +216,8 @@ public class Settings {
     public void getPText(){
         String pText = playerField1.getText();
     }
+    
+    
 
     public void styleButton(JButton button){
         button.setOpaque(false);

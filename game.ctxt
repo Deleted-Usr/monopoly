@@ -2,4 +2,6 @@
 comment0.target=game
 comment1.params=
 comment1.target=game()
-numComments=2
+comment2.params=newPlayer
+comment2.target=void\ addPlayers(player)
+numComments=3

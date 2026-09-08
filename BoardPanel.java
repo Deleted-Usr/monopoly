@@ -28,6 +28,7 @@ public class BoardPanel extends JPanel implements ActionListener{
     private player player;
     private Settings settingsPanel;
     private dice dice;
+    private game game;
     
     private Timer diceTimer;
 
@@ -44,7 +45,8 @@ public class BoardPanel extends JPanel implements ActionListener{
     public BoardPanel() {
         setLayout(null);
         board = new Board();
-        settingsPanel = new Settings(this);
+        game = new game();
+        settingsPanel = new Settings(this, game);
         setFont(new Font("Arial", Font.BOLD, 24));
     
         dice = new dice();
@@ -188,7 +190,7 @@ public class BoardPanel extends JPanel implements ActionListener{
             g.drawImage(seImage, 0, 0, 900, 900, this);
             startButton.setVisible(false);
             settingsButton.setVisible(false);
-            diceButton.setVisible(true);
+            diceButton.setVisible(false);
         }
         if(playing){
             g.setColor(Color.white);

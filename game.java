@@ -1,3 +1,5 @@
+import java.util.List;
+import java.util.*;
  
 
 
@@ -7,7 +9,8 @@ public class game{
     private player players;
     private dice dice;
 
-    
+    public List<player> numOfPlayers = new ArrayList();
+
 
     public game(){
         
@@ -16,6 +19,10 @@ public class game{
     
     
     
+    }
+    
+    public void addPlayers(player newPlayer){
+        numOfPlayers.add(newPlayer);
     }
     
 }
