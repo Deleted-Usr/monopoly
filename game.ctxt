@@ -4,4 +4,6 @@ comment1.params=
 comment1.target=game()
 comment2.params=newPlayer
 comment2.target=void\ addPlayers(player)
-numComments=3
+comment3.params=
+comment3.target=void\ turnSystem()
+numComments=4

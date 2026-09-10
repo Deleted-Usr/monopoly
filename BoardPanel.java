@@ -13,12 +13,13 @@ public class BoardPanel extends JPanel implements ActionListener{
     int propertyWidth = (boardsize - (2*cornerSize))/9;;
     int pieceSize = 50;
     int start = 742;
-    boolean playing = false;
+    public boolean playing = false;
     boolean settings = false;
     JButton startButton;
     JButton settingsButton;
     JButton backButton;
     JButton diceButton;
+    JButton endTurnButton;
 
     public boolean roll;
 
@@ -80,6 +81,9 @@ public class BoardPanel extends JPanel implements ActionListener{
         diceButton = new JButton("Roll Dice");
         add(diceButton);
         diceButton.addActionListener(this);
+        endTurnButton = new JButton("End Turn");
+        add(endTurnButton);
+        endTurnButton.addActionListener(this);
     }
 
     public void diceRoll() {
@@ -109,6 +113,7 @@ public class BoardPanel extends JPanel implements ActionListener{
     { 
         if(e.getSource() == startButton){
             playing = true;  
+            game.startGame = true;
         }
         if(e.getSource() == settingsButton){
             settings = true;
@@ -141,6 +146,10 @@ public class BoardPanel extends JPanel implements ActionListener{
             roll = true;
             diceRoll();
         }
+        if(e.getSource() == endTurnButton){
+            game.endTurn = true;
+        }
+        
         repaint();
     } 
 
@@ -151,6 +160,8 @@ public class BoardPanel extends JPanel implements ActionListener{
         button.setForeground(Color.WHITE);
         button.setBorder(BorderFactory.createLineBorder(Color.WHITE));
     }
+    
+    
 
     @Override
     protected void paintComponent(Graphics g)
@@ -180,7 +191,11 @@ public class BoardPanel extends JPanel implements ActionListener{
             backButton.setSize(100, 100);
             styleButton(backButton);
             backButton.setFont(new Font("Segoe UI Symbol", Font.BOLD, 50));
-
+            
+            endTurnButton.setLocation(350, 850);
+            endTurnButton.setSize(200, 60);
+            styleButton(endTurnButton);
+            
             diceButton.setLocation(350, 850);
             diceButton.setSize(200, 60);
             diceButton.setBackground(Color.GREEN);

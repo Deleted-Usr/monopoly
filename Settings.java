@@ -39,6 +39,7 @@ public class Settings {
         applyButton.addActionListener(event -> {
             apply(); 
             System.out.println(game.numOfPlayers);
+            game.startGame = true;
             
             
         });
