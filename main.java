@@ -1,7 +1,7 @@
- 
+package Java.MONOPOLY;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;   
+
 public class main extends BoardPanel{
     public static void main(String[] args){
         BoardPanel  imageBoard = new BoardPanel();

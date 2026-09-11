@@ -1,5 +1,4 @@
- 
-
+package Java.MONOPOLY;
 
 import java.awt.image.*;
 import java.io.*;

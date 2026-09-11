@@ -1,8 +1,7 @@
-
+package Java.MONOPOLY;
 
 
 import java.util.Random;
-import java.awt.Font;
 
 public class dice {
     public int dice1;
